@@ -282,8 +282,8 @@ function ProductList({ onHomeClick }) {
   };
   const handlePlantsClick = (e) => {
     e.preventDefault();
-    setShowPlants(true); 
-    setShowCart(false); 
+    setShowPlants(true);
+    setShowCart(false);
   };
 
   const handleContinueShopping = (e) => {
@@ -297,7 +297,7 @@ function ProductList({ onHomeClick }) {
     dispatch(addItem(product));
     setAddedToCart((prevState) => ({
       ...prevState,
-      [product.name]: true, 
+      [product.name]: true,
     }));
   };
 
@@ -365,7 +365,10 @@ function ProductList({ onHomeClick }) {
                       <img src={plant.image} alt={plant.name} />
                       <p className="description">{plant.description}</p>
                       <p className="cost">{plant.cost}</p>
-                      <button className="add-to-cart" onClick={() => handleAddToCart(plant)}>
+                      <button
+                        className="add-to-cart"
+                        onClick={() => handleAddToCart(plant)}
+                        disabled={addedToCart[plant.name]}>
                         {addedToCart[plant.name] ? "Added " : "Add "} to cart
                       </button>
                     </>
