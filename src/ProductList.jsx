@@ -278,12 +278,12 @@ function ProductList({ onHomeClick }) {
 
   const handleCartClick = (e) => {
     e.preventDefault();
-    setShowCart(true); // Set showCart to true when cart icon is clicked
+    setShowCart(true);
   };
   const handlePlantsClick = (e) => {
     e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
+    setShowPlants(true); 
+    setShowCart(false); 
   };
 
   const handleContinueShopping = (e) => {
@@ -294,10 +294,10 @@ function ProductList({ onHomeClick }) {
   const dispatch = useDispatch();
 
   const handleAddToCart = (product) => {
-    dispatch(addItem(product)); // 🔹 Redux action
+    dispatch(addItem(product));
     setAddedToCart((prevState) => ({
       ...prevState,
-      [product.name]: true, // 🔹 Mark as added
+      [product.name]: true, 
     }));
   };
 
@@ -365,8 +365,8 @@ function ProductList({ onHomeClick }) {
                       <img src={plant.image} alt={plant.name} />
                       <p className="description">{plant.description}</p>
                       <p className="cost">{plant.cost}</p>
-                      <button className="add-to-cart" onClick={handleAddToCart}>
-                        {addedToCart? "Added " : "Add "} to cart
+                      <button className="add-to-cart" onClick={() => handleAddToCart(plant)}>
+                        {addedToCart[plant.name] ? "Added " : "Add "} to cart
                       </button>
                     </>
                   );
